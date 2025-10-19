@@ -3,7 +3,7 @@
 #include <time.h>
 #include <string.h>
 
-#define LOG_FILE "./servo_gpio_log.txt"
+#define LOG_FILE "./Robot.txt"
 
 static const char* level_str[] = {
     "DEBUG",

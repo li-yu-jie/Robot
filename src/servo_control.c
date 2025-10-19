@@ -7,9 +7,9 @@ static int get_servo_pin(int servo_id) {
     switch(servo_id) {
         case 1: return Slewing_arm;
         case 2: return Jaw_clamp;
-        case 3: return Arm_swing;
-        case 4: return Telescopic;
-        default: return -1; // 无效ID
+        case 3: return Telescopic;
+        case 4: return Arm_swing;
+        default: return -1; // 无效ID   
     }
 }
 
