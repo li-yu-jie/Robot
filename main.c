@@ -57,7 +57,7 @@ int main() {
 
     // 主循环：持续获取数据并控制外设
     while (!g_quit) {
-        // 1. 获取两个角度的雷达距离（使用带日志的接口）
+        // // 1. 获取两个角度的雷达距离（使用带日志的接口）
         float dist1 = lidar_get_distance(angles[0], 1.0f);  // 90°
         float dist2 = lidar_get_distance(angles[1], 1.0f);  // 0°
         printf("当前距离: %0.3fm (90°), %0.3fm (0°)\n", dist1, dist2);
@@ -71,21 +71,21 @@ int main() {
         gpio_set_level(Res_Led, LOW);
         gpio_set_level(Stop_Led, LOW);
         usleep(50000);   // 灭50ms
-
+        int i = 1;
         // 3. 控制舵机动作（修正ID错误，舵机ID应为1-4）
         // 第一组动作
-        set_angle(1, 180);  // 舵机1转到180°
-        set_angle(2, 90);   // 舵机2转到90°
-        set_angle(3, 180);  // 舵机3转到180°
-        set_angle(4, 0);    // 舵机4转到0°（原270°超出范围，修正为0-180°）
-        usleep(1000000);    // 等待1秒
+        set_angle(i, 90);  // 舵机1转到180°
+        // set_angle(2, 300);   // 舵机2转到90°
+        // set_angle(3, 300);  // 舵机3转到180°
+        // set_angle(4, 100);    // 舵机4转到0°（原270°超出范围，修正为0-180°）
+        usleep(3000000);    // 等待1秒
 
         // 第二组动作
-        set_angle(1, 0);    // 舵机1转到0°
-        set_angle(2, 0);    // 舵机2转到0°
-        set_angle(3, 0);    // 舵机3转到0°
-        set_angle(4, 20);   // 舵机4转到20°
-        usleep(1000000);    // 等待1秒
+        set_angle(i, 0);    // 舵机1转到0°
+        // set_angle(2, 0);    // 舵机2转到0°
+        // set_angle(3, 0);    // 舵机3转到0°
+        // set_angle(4, 50);   // 舵机4转到20°
+        usleep(3000000);    // 等待1秒
 
         // 4. 主循环间隔（5秒，避免动作过快）
         usleep(50000);

@@ -5,10 +5,10 @@
 
 static int get_servo_pin(int servo_id) {
     switch(servo_id) {
-        case 1: return SERVO_1;
-        case 2: return SERVO_2;
-        case 3: return SERVO_3;
-        case 4: return SERVO_4;
+        case 1: return Slewing_arm;
+        case 2: return Jaw_clamp;
+        case 3: return Arm_swing;
+        case 4: return Telescopic;
         default: return -1; // 无效ID
     }
 }
@@ -51,10 +51,10 @@ int servo_init(void) {
 // 清理舵机资源
 void servo_cleanup(void) {
     // 停止所有舵机（发送0μs脉冲）
-    gpioServo(SERVO_1, 0);
-    gpioServo(SERVO_2, 0);
-    gpioServo(SERVO_3, 0);
-    gpioServo(SERVO_4, 0);
+    gpioServo(Slewing_arm, 0);
+    gpioServo(Jaw_clamp, 0);
+    gpioServo(Arm_swing, 0);
+    gpioServo(Telescopic, 0);
     write_log(LOG_DEBUG, "所有舵机已停止");
 
     // 终止pigpio库
